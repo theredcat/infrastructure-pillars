@@ -24,7 +24,7 @@ def get_config(id):
 ifaces = get_config(grains['id'])
 
 if "hypervisor" in grains['roles']:
-	keys = [ key for key in salt['redis.keys']() if key[0:10] == "interfaces" ]
+	keys = [ key.replace("interfaces:", "") for key in salt['redis.keys']() if key[0:10] == "interfaces" ]
 	ifaces["provider_cloud_ips"] = {}
 	for key in keys:
 		ifaces["provider_cloud_ips"][key] = get_config(key)
