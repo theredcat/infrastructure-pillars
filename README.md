@@ -38,7 +38,7 @@ First run this to setup minimal bootstrap configuration:
 <code>
 wget -O - https://repo.saltstack.com/apt/debian/8/amd64/latest/SALTSTACK-GPG-KEY.pub |apt-key add -
 echo "deb http://repo.saltstack.com/apt/debian/8/amd64/latest jessie main" >> /etc/apt/sources.list
-apt-get install salt-minion python-git python-redis
+apt-get install salt-minion python-git python-redis python-mako
 cat <<EOF > /etc/salt/minion
 file_client: local
 
@@ -56,5 +56,10 @@ grains:
   roles:
     - hypervisor
   datacenter: fr2
+
+
+redis.host: $redis_host
+redis.port: $your_port
+redis.password: $your_password
 EOF
 </code>

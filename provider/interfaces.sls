@@ -4,7 +4,7 @@ import json
 
 def get_config(id):
 	interfaces = dict([ (key, json.loads(value)) for key, value in salt['redis.hgetall']('interfaces:{id}'.format(id=id)).iteritems() ])
-	bridges = dict([ (key, json.loads(value)) for key, value in salt['redis.hgetall']('bridges:{id}'.format(id=id).iteritems() ])
+	bridges = dict([ (key, json.loads(value)) for key, value in salt['redis.hgetall']('bridges:{id}'.format(id=id)).iteritems() ])
 
 	out = {}
 	if len(interfaces) > 0:
